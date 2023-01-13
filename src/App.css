@@ -1,13 +1,9 @@
 .App {
   display: flex;
   text-align: left;
+  flex-direction: column;
 }
 
-.App-logo {
-  height: 400px;
-  width: auto;
-  border-radius: 50%;
-}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -16,11 +12,11 @@
 }
 
 .App-header {
+  border: 4px solid rgb(118, 79, 244);
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -29,34 +25,30 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 .chat-window{
   background: #99762580;
-  margin-left: 1200px;
-  width: 425px;
-  height: 800px;
+  margin-left: auto;
+  width: 47vh;
+  height: auto;
   border: 2px solid orangered;
   padding: 15px;
 }
 
-.msg-window{
+.msg-window {
   border: 2px solid green;
-  height: 700px;
+  height: 80vh;
+  margin: 10px;
 
-  overflow-y: auto;
-  margin-bottom: 10px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-window{
-  border: 2px solid rgb(40, 184, 40);
+  height: auto;
+  width: auto;
+  border: 4px solid rgb(241, 48, 232);
 }
 
 .message {
@@ -65,11 +57,12 @@
   border-radius: 20px;
 
   height: auto;
-  width: 375px;
+  width: 30vh;
 
   padding: 8px;
 
   display: flex;
+  align-items: center;
 }
 
 .pic {

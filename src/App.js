@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import './App.css';
 import './saul.jpg';
-
+import Video from './Video.js';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore'; // database
 import 'firebase/compat/auth';
@@ -31,6 +31,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        THIS IS HEADER
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -47,6 +48,7 @@ function App() {
           {user ? <ChatRoom /> : <SignIn />}
         </section>
       </header>
+      <Video />
     </div>
   );
 }
@@ -75,7 +77,7 @@ function SignOut() {
 function ChatRoom() {
   const dummy = useRef();
   const messagesRef = firestore.collection('messages'); // Reference msgs in database
-  const query = messagesRef.orderBy('createdAt').limit(25);
+  const query = messagesRef.orderBy('createdAt').limitToLast(25);
 
   const [messages] = useCollectionData(query, {idField: 'id'}); // Returns array of chat messages
   const [formValue, setFormValue] = useState('')
@@ -99,6 +101,7 @@ function ChatRoom() {
 
   return (
     <div className='chat-window'>
+    CHAT-WINDOW
       <main className='msg-window'>
         {/* pass document data as message prop for each message */}
         MSG-WINDOW
@@ -107,15 +110,14 @@ function ChatRoom() {
         <span ref={dummy}></span>
       </main>
 
-      <div className='form-window'>
-        <form onSubmit = {sendMessage}>
-          {/* bind value to formValue state.
-              When user types message, listens to onChange event and takes new value. */}
-
-          <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder = 'say something nice'/>
-          <button type='submit' disabled={!formValue}>Button</button>
-        </form>
-      </div>
+    
+      <form className='form-window' onSubmit = {sendMessage}>
+        {/* bind value to formValue state.
+            When user types message, listens to onChange event and takes new value. */}
+        form
+        <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder = 'say something nice'/>
+        <button type='submit' disabled={!formValue}>Button</button>
+      </form>
     </div>
   )
 }
@@ -126,13 +128,13 @@ function ChatMessage(props) {
 
   const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received'; // check if a msg is sent or receieved
 
-  return (
+  return (<>
     <div className={`message ${messageClass}`}>
       {/* profile picture */}
-      <img referrerPolicy='no-referrer' className='pic' src={photoURL} /> 
+      <img referrerPolicy='no-referrer' className='pic' src={photoURL} alt = 'pic'/> 
       <p>{`${messageClass}: ${text}`}</p>
     </div>
-  )
+  </>)
 }
 
 export default App;
