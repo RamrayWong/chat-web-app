@@ -11,10 +11,18 @@
   }
 }
 
+h1 {
+  font-size: 4vh;
+  width: fit-content;
+  margin-top: 1vh;
+  margin-left: 2vw;
+  border: 0px solid white;
+}
+
 .App-header {
-  border: 4px solid rgb(118, 79, 244);
-  background-color: #282c34;
-  min-height: 100vh;
+  border: 0px solid rgb(118, 79, 244);
+  background-color: #202020;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   font-size: calc(10px + 2vmin);
@@ -25,55 +33,107 @@
   color: #61dafb;
 }
 
+.sign-in {
+  height: 100px;
+  width: 200px;
+  margin-top: 33vh;
+  margin-left: 42vw;
+  border-radius: 10px;
+  background-color: #416cac;
+  color: #ffffff;
+  font-size: 18px;
+
+}
+
+.sign-out {
+  width: 90px;
+  height: 35px;
+  background-color: #384860;
+  color: white;
+  border-radius: 20px;
+  align-self: flex-end;
+  margin-right: 3vh;
+  
+}
+
 
 .chat-window{
-  background: #99762580;
+  background-color: #60424200;
+  border-left: 1px solid #666666;
   margin-left: auto;
-  width: 47vh;
-  height: auto;
-  border: 2px solid orangered;
-  padding: 15px;
+  margin-top: 0px;
+  width: fit-content;
+  height: fit-content;
+  padding-left: 10px;
+  padding-top: 10px;
+  align-items: center;
 }
 
 .msg-window {
-  border: 2px solid green;
+  border: 0px solid green;
   height: 80vh;
-  margin: 10px;
-
   overflow-y: scroll;
+  
   display: flex;
   flex-direction: column;
 }
 
-.form-window{
-  height: auto;
-  width: auto;
-  border: 4px solid rgb(241, 48, 232);
+.msg-input {
+  width: 25vh;
+  height: 3.3vh;
+  border-radius: 10px;
+  margin-right: 5px;
+
+  background-color: #363a4d;
+  color: white;
 }
 
-.message {
-  background-color: rgba(127, 255, 212, 0.41);
-  border: 3px solid #ffffff;
-  border-radius: 20px;
+.msg-send {
+  background-color: #666666;
+  border: 1px solid rgb(54, 46, 70);
+  color:rgb(255, 255, 255);
+  display: flex;
+  border-radius: 10px;
+  height: 3.5vh;
+  align-items: center;
+}
 
+.form-window{
   height: auto;
-  width: 30vh;
+  width: 36vh;
 
-  padding: 8px;
-
+  border: 0px solid rgb(241, 48, 232);
+  border-top: 1px solid #666666;
+  padding-top: 10px;
+  padding-bottom: 10px;
   display: flex;
   align-items: center;
 }
 
+.message {
+  background-color: rgba(98, 98, 98, 0.41);
+  border: 0px solid #ffffff;
+  border-radius: 10px;
+
+  min-height: 70px;
+  max-width: 30vh;
+  margin-bottom: 10px;
+  padding-left: 8px;
+  padding-right: 10px;
+
+  display: flex;
+  align-items: center;
+  font-size: 1.6vh;
+}
+
 .pic {
-  border: 1px solid green;
+  border: 0px solid green;
   border-radius: 50%;
   height: 50px;
   margin-right: 15px;
 }
 
 .sent {
-  background-color: black;
+  background-color: rgb(67, 68, 91);
   font-size: auto;
-  font-size: 18px;
 }

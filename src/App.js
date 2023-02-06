@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import './App.css';
 import './saul.jpg';
 import Video from './Video.js';
@@ -31,24 +31,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        THIS IS HEADER
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <h1 className='title'>CHAT ROOM</h1>
         <SignOut />
         <section> {/* if user, show chat. Else, sign in*/}
           {user ? <ChatRoom /> : <SignIn />}
         </section>
       </header>
-      <Video />
     </div>
   );
 }
@@ -62,8 +50,7 @@ function SignIn() {
   }
   return (
     <div>
-    <button className='sign-in' onClick = {signInWithGoogle}>Sign in with Google</button> 
-    <p>Do not violate the community guidelines or you will be banned for life!</p>
+    <button className='sign-in' onClick = {signInWithGoogle}>Sign in with Google</button>
     </div>
   )
 }
@@ -76,11 +63,16 @@ function SignOut() {
 
 function ChatRoom() {
   const dummy = useRef();
+  const containerRef = useRef(null);
   const messagesRef = firestore.collection('messages'); // Reference msgs in database
-  const query = messagesRef.orderBy('createdAt').limitToLast(25);
+  const query = messagesRef.orderBy('createdAt');
 
   const [messages] = useCollectionData(query, {idField: 'id'}); // Returns array of chat messages
   const [formValue, setFormValue] = useState('')
+
+  useEffect(() => {
+    containerRef.current.scrollTop = containerRef.current.scrollHeight;
+  }, [containerRef.current]);
 
   const sendMessage = async (e) => {
     e.preventDefault(); // prevent refreshing upon new message
@@ -101,10 +93,10 @@ function ChatRoom() {
 
   return (
     <div className='chat-window'>
-    CHAT-WINDOW
-      <main className='msg-window'>
+    
+      <main className='msg-window' ref={containerRef}>
         {/* pass document data as message prop for each message */}
-        MSG-WINDOW
+        
         {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
       
         <span ref={dummy}></span>
@@ -114,9 +106,9 @@ function ChatRoom() {
       <form className='form-window' onSubmit = {sendMessage}>
         {/* bind value to formValue state.
             When user types message, listens to onChange event and takes new value. */}
-        form
-        <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder = 'say something nice'/>
-        <button type='submit' disabled={!formValue}>Button</button>
+        
+        <input className='msg-input' value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder = 'say something nice'/>
+        <button className='msg-send' type='submit' disabled={!formValue}>SEND</button>
       </form>
     </div>
   )
