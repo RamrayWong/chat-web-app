@@ -6,19 +6,11 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore'; // database
 import 'firebase/compat/auth';
 import 'firebase/compat/analytics';
-
+import { firebaseConfig } from './firebase.config';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
-firebase.initializeApp({
-  apiKey: "AIzaSyA07RLLPQa7E6hYQ7IU4_ixxgVdukoR5Zc",
-  authDomain: "watch-party-53f65.firebaseapp.com",
-  projectId: "watch-party-53f65",
-  storageBucket: "watch-party-53f65.appspot.com",
-  messagingSenderId: "1030292727104",
-  appId: "1:1030292727104:web:e11f8c275fa9ce90f3c6a5",
-  measurementId: "G-M1KX8FMRPN"
-})
+firebase.initializeApp(firebaseConfig);
 
 const auth = firebase.auth();
 const firestore = firebase.firestore();
