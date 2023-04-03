@@ -26,7 +26,7 @@ function App() {
       <h1 className='title'>CHAT ROOM</h1>
         <SignOut />
         <section> {/* if user, show chat. Else, sign in*/}
-          {user ? <ChatRoom name={user.displayName} /> : <SignIn />}
+          {user ? <ChatRoom /> : <SignIn />}
         </section>
       </header>
     </div>
@@ -53,8 +53,7 @@ function SignOut() {
   )
 }
 
-function ChatRoom(props) {
-  const { name } = props
+function ChatRoom() {
   const dummy = useRef();
   const containerRef = useRef(null);
   const messagesRef = firestore.collection('messages'); // Reference msgs in database
@@ -77,8 +76,7 @@ function ChatRoom(props) {
       text: formValue,
       createdAt:firebase.firestore.FieldValue.serverTimestamp(),
       uid,
-      photoURL,
-      name
+      photoURL
     })
     
     setFormValue(''); // reset form value back to empty
@@ -87,10 +85,11 @@ function ChatRoom(props) {
 
   return (
     <div className='chat-window'>
+    
       <main className='msg-window' ref={containerRef}>
         {/* pass document data as message prop for each message */}
         
-        {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} name={name}/>)}
+        {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} displayName={user.displayName} />)}
       
         <span ref={dummy}></span>
       </main>
@@ -108,17 +107,18 @@ function ChatRoom(props) {
 }
 
 function ChatMessage(props) {
-  const { text, uid, photoURL, name } = props.message; // access message data and uid 
+
+  const { text, uid, photoURL } = props.message; // access message data and uid 
 
   const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received'; // check if a msg is sent or receieved
 
-
+  const firstName = user.displayName.split(' ')[0];
 
   return (<>
     <div className={`message ${messageClass}`}>
       {/* profile picture */}
       <img referrerPolicy='no-referrer' className='pic' src={photoURL} alt = 'pic'/> 
-      <p>{`${name}: ${text}`}</p>
+      <p>{`${displayName}: ${text}`}</p>
     </div>
   </>)
 }

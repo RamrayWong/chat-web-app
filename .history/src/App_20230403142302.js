@@ -19,6 +19,7 @@ const firestore = firebase.firestore();
 function App() {
 
   const [user] = useAuthState(auth); // user is null when signed out, an object when signed in
+  const name = user.displayName;
 
   return (
     <div className="App">
@@ -26,7 +27,7 @@ function App() {
       <h1 className='title'>CHAT ROOM</h1>
         <SignOut />
         <section> {/* if user, show chat. Else, sign in*/}
-          {user ? <ChatRoom name={user.displayName} /> : <SignIn />}
+          {user ? <ChatRoom name={name} /> : <SignIn />}
         </section>
       </header>
     </div>
@@ -87,6 +88,7 @@ function ChatRoom(props) {
 
   return (
     <div className='chat-window'>
+    Hello {name}
       <main className='msg-window' ref={containerRef}>
         {/* pass document data as message prop for each message */}
         

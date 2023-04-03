@@ -19,6 +19,7 @@ const firestore = firebase.firestore();
 function App() {
 
   const [user] = useAuthState(auth); // user is null when signed out, an object when signed in
+  const name = user.displayName;
 
   return (
     <div className="App">
@@ -26,7 +27,7 @@ function App() {
       <h1 className='title'>CHAT ROOM</h1>
         <SignOut />
         <section> {/* if user, show chat. Else, sign in*/}
-          {user ? <ChatRoom name={user.displayName} /> : <SignIn />}
+          {user ? <ChatRoom name={name} /> : <SignIn />}
         </section>
       </header>
     </div>
@@ -77,8 +78,7 @@ function ChatRoom(props) {
       text: formValue,
       createdAt:firebase.firestore.FieldValue.serverTimestamp(),
       uid,
-      photoURL,
-      name
+      photoURL
     })
     
     setFormValue(''); // reset form value back to empty
@@ -87,6 +87,7 @@ function ChatRoom(props) {
 
   return (
     <div className='chat-window'>
+    
       <main className='msg-window' ref={containerRef}>
         {/* pass document data as message prop for each message */}
         
@@ -108,6 +109,7 @@ function ChatRoom(props) {
 }
 
 function ChatMessage(props) {
+
   const { text, uid, photoURL, name } = props.message; // access message data and uid 
 
   const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received'; // check if a msg is sent or receieved

@@ -87,6 +87,7 @@ function ChatRoom(props) {
 
   return (
     <div className='chat-window'>
+    Hello {name}
       <main className='msg-window' ref={containerRef}>
         {/* pass document data as message prop for each message */}
         
