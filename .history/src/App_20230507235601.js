@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './App.css';
 import './saul.jpg';
+import Video from './Video.js';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore'; // database
 import 'firebase/compat/auth';
@@ -113,24 +114,18 @@ function ChatMessage(props) {
 
   const timeStamp = createdAt ? new Intl.DateTimeFormat('en-US', {
     year: 'numeric',
-    month: 'numeric',
-    day: 'numeric',
-    hour: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
     minute: '2-digit',
   }).format(createdAt.toDate()) : '';
 
   return (<>
-    <div className='message'>
-      <img referrerPolicy='no-referrer' className='pic' src={photoURL} alt='user pic'/> 
-      <div className='message-content'>
-        <div className='message-header'>
-          <strong className='username'>{name}</strong>
-          <span className='timestamp'>{timeStamp}</span>
-        </div>
-        <div className='message-text'>
-          <p>{text}</p>
-        </div>
-      </div> 
+    <div className={`message ${messageClass}`}>
+      {/* profile picture */}
+      <img referrerPolicy='no-referrer' className='pic' src={photoURL} alt = 'pic'/> 
+      <p>{`${name}: ${text}`}</p>
+      <p className='timestamp'>{timeStamp}</p>
     </div>
   </>)
 }

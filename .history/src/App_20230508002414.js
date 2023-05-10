@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './App.css';
 import './saul.jpg';
+import Video from './Video.js';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore'; // database
 import 'firebase/compat/auth';
@@ -8,6 +9,7 @@ import 'firebase/compat/analytics';
 import { firebaseConfig } from './firebase.config';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { Timestamp } from 'firebase/firestore';
 
 firebase.initializeApp(firebaseConfig);
 
@@ -120,17 +122,15 @@ function ChatMessage(props) {
   }).format(createdAt.toDate()) : '';
 
   return (<>
-    <div className='message'>
-      <img referrerPolicy='no-referrer' className='pic' src={photoURL} alt='user pic'/> 
+    <div className={`message`}>
+      <img referrerPolicy='no-referrer' className='pic' src={photoURL}/> 
+      <div className='message-header'>
+        <strong className='username'>{name}</strong>
+        <span className='timestamp'>{timeStamp}</span>
+      </div>
       <div className='message-content'>
-        <div className='message-header'>
-          <strong className='username'>{name}</strong>
-          <span className='timestamp'>{timeStamp}</span>
-        </div>
-        <div className='message-text'>
-          <p>{text}</p>
-        </div>
-      </div> 
+        <p>{text}</p>
+      </div>
     </div>
   </>)
 }

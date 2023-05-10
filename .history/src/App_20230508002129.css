@@ -65,35 +65,17 @@ h1 {
   cursor: not-allowed;
 }
 
+
 .sign-out {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 80px;
+  width: 90px;
   height: 35px;
-  font-family: Arial, sans-serif;
-  font-size: 13px;
-  background-color: #444665;
+  background-color: #384860;
   color: white;
-  border: none;
   border-radius: 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
   align-self: flex-end;
   margin-right: 3vh;
+  
 }
-
-.sign-out:hover {
-  background-color: #601414;
-}
-
-.sign-out:active {
-  background-color: #2e7031;
-  transform: translateY(2px);
-}
-
 
 
 .chat-window{
@@ -150,49 +132,46 @@ h1 {
 
 .message {
   background-color: rgba(98, 98, 98, 0.41);
-  border: 0px solid #ffffff;
+  border: 1px solid #ffffff;
   border-radius: 10px;
 
-  min-height: auto;
-  max-height: none;
+  min-height: 70px;
   max-width: 30vh;
   margin-bottom: 10px;
   padding-left: 8px;
   padding-right: 10px;
 
   display: flex;
-  align-items: flex-start;
+  font-size: 1.6vh;
 }
-
 
 /* Add this to your CSS file */
 /* Style the message timestamp */
 .message-header {
-  border: solid 0px black;
+  border: solid 2px black;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-size: 0.6rem;
-  color: rgb(255, 255, 255);
-  width: fit-content; /* Add this to make the header span the full width */
+  font-size: 0.5rem;
+  color: rgba(255, 255, 255, 0.6);
+  width: 100%; /* Add this to make the header span the full width */
   height: fit-content;
-  margin-top: 5px;
 }
 
-.message-text {
-  border: solid 0px green;
+.message-content {
+  border: solid 2px green;
   display: flex;
   align-items: flex-start;
-  font-size: 1.4vh;
+  font-size: 1.6vh;
   width: 100%; /* Add this to make the content span the full width */
-  height: fit-content;
-  word-break: break-word;
 }
 
 .timestamp {
+  font-size: 0.5rem;
   color: rgba(255, 255, 255, 0.6);
   text-align: right;
-  margin-left: 6px; /* Add this to push the timestamp to the right */
+  margin-left: auto; /* Add this to push the timestamp to the right */
+  margin-top: 0; /* Update this to 0 to position the timestamp correctly */
 }
 
 
@@ -201,8 +180,10 @@ h1 {
   border: 0px solid green;
   border-radius: 50%;
   height: 50px;
-  margin-right: 10px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-right: 15px;
 }
 
+.sent {
+  background-color: rgb(67, 68, 91);
+  font-size: auto;
+}

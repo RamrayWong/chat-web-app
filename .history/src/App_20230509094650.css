@@ -65,35 +65,17 @@ h1 {
   cursor: not-allowed;
 }
 
+
 .sign-out {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 80px;
+  width: 90px;
   height: 35px;
-  font-family: Arial, sans-serif;
-  font-size: 13px;
-  background-color: #444665;
+  background-color: #384860;
   color: white;
-  border: none;
   border-radius: 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
   align-self: flex-end;
   margin-right: 3vh;
+  
 }
-
-.sign-out:hover {
-  background-color: #601414;
-}
-
-.sign-out:active {
-  background-color: #2e7031;
-  transform: translateY(2px);
-}
-
 
 
 .chat-window{
@@ -161,6 +143,7 @@ h1 {
   padding-right: 10px;
 
   display: flex;
+  font-size: 1.6vh;
   align-items: flex-start;
 }
 
@@ -183,7 +166,7 @@ h1 {
   border: solid 0px green;
   display: flex;
   align-items: flex-start;
-  font-size: 1.4vh;
+  font-size: 1.3vh;
   width: 100%; /* Add this to make the content span the full width */
   height: fit-content;
   word-break: break-word;
@@ -192,7 +175,8 @@ h1 {
 .timestamp {
   color: rgba(255, 255, 255, 0.6);
   text-align: right;
-  margin-left: 6px; /* Add this to push the timestamp to the right */
+  margin-left: 4px; /* Add this to push the timestamp to the right */
+  margin-top: 0; /* Update this to 0 to position the timestamp correctly */
 }
 
 

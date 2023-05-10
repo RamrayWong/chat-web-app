@@ -121,7 +121,7 @@ function ChatMessage(props) {
 
   return (<>
     <div className='message'>
-      <img referrerPolicy='no-referrer' className='pic' src={photoURL} alt='user pic'/> 
+      <img referrerPolicy='no-referrer' className='pic' src={photoURL}/> 
       <div className='message-content'>
         <div className='message-header'>
           <strong className='username'>{name}</strong>

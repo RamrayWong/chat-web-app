@@ -66,18 +66,15 @@ h1 {
 }
 
 .sign-out {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 80px;
+  width: 90px;
   height: 35px;
   font-family: Arial, sans-serif;
-  font-size: 13px;
-  background-color: #444665;
+  font-size: 16px;
+  padding: 10px 20px;
+  background-color: #008d00;
   color: white;
   border: none;
-  border-radius: 20px;
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 
@@ -86,7 +83,7 @@ h1 {
 }
 
 .sign-out:hover {
-  background-color: #601414;
+  background-color: #45a049;
 }
 
 .sign-out:active {
