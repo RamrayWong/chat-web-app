@@ -122,7 +122,7 @@ function ChatMessage(props) {
 
   const linkedText = linkify.find(text).length > 0
     ? linkify.find(text).map(link => 
-        <a className="chat-link" href={link.href} target="_blank" rel="noopener noreferrer">{link.value}</a>)
+        <a href={link.href} target="_blank" rel="noopener noreferrer">{link.value}</a>)
     : text;
 
   return (<>

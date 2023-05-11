@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from 'react';
-import * as linkify from 'linkifyjs';
 import './App.css';
 import './saul.jpg';
 import firebase from 'firebase/compat/app';
@@ -122,7 +121,7 @@ function ChatMessage(props) {
 
   const linkedText = linkify.find(text).length > 0
     ? linkify.find(text).map(link => 
-        <a className="chat-link" href={link.href} target="_blank" rel="noopener noreferrer">{link.value}</a>)
+        <a href={link.href} target="_blank" rel="noopener noreferrer">{link.value}</a>)
     : text;
 
   return (<>
